@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloudForge Product Catalog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">CLOUDFORGE LITE</p>
+      <h1>Product Catalog</h1>
+      <p class="subtitle">A free Firebase-hosted cloud application with Firestore persistence.</p>
+    </div>
+    <span id="connectionStatus" class="status status-warn">Starting…</span>
+  </header>
+
+  <main class="layout">
+    <section class="card form-card">
+      <h2>Add product</h2>
+      <p class="muted">The form writes a validated document to Firestore.</p>
+      <form id="productForm">
+        <label>
+          Product name
+          <input id="name" name="name" required minlength="2" placeholder="Mechanical keyboard">
+        </label>
+        <label>
+          Description
+          <textarea id="description" name="description" rows="3" placeholder="Short description"></textarea>
+        </label>
+        <div class="two-col">
+          <label>
+            Price
+            <input id="price" name="price" type="number" min="0" step="0.01" required placeholder="2499">
+          </label>
+          <label>
+            Stock
+            <input id="stock" name="stock" type="number" min="0" step="1" required placeholder="12">
+          </label>
+        </div>
+        <button type="submit">Add to catalog</button>
+        <p id="formMessage" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="card catalog-card">
+      <div class="section-heading">
+        <div>
+          <h2>Live catalog</h2>
+          <p class="muted">Firestore listener updates this list without a page refresh.</p>
+        </div>
+        <strong id="productCount">0 products</strong>
+      </div>
+      <div id="productList" class="product-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    CloudForge Lite · Firebase Hosting + Firestore + Authentication + Security Rules
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
